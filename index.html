@@ -1,0 +1,14 @@
+<html>
+<head>
+<title>XSS_TITLE_MARKER_1</title>
+<meta name="description" content="XSS_DESC_MARKER_1">
+</head>
+<body>
+<h1>attacker-controlled-page</h1>
+<img src="x" onerror="window.__XSS_HIT__=(window.__XSS_HIT__||[]).concat('IMG_ONERROR_MARKER_1');document.title='XSS_EXECUTED_MARKER_1'">
+<script>
+window.__XSS_HIT__=(window.__XSS_HIT__||[]).concat('SCRIPT_MARKER_1:'+document.title);
+try{document.title='XSS_EXECUTED_MARKER_1';}catch(e){}
+</script>
+</body>
+</html>
